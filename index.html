@@ -40,9 +40,6 @@
             <h6 class="font_6" style="line-height:1.6em; text-align:center;">
                           <span style="font-size:21px;letter-spacing:0.1em;font-family:avenirLight;color:black">You missed out on bitcoin. Here's a second chance. Join us</a></span>
                         </h6>
-            <!-- <div class="wow fadeInDown" data-wow-delay="0.3s">
-                          <a class="btn btn-default btn-home" href="#about" role="button">Get Started</a>
-                        </div> -->
           </div>
         </div>
         <div class="row">
@@ -53,6 +50,15 @@
               <input id='email' type="text" class="form-control" placeholder="Email Address">
               <br>
               <button class="btn btn-default btn-submit" type="submit" id="submitBtn">Join</button>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+          </div>
+          <div class="col-md-6">
+            <div style="font-family:avenirLight;">
+              <p style="font-size:20px;"> Hash rate pooled so far: <span id='hashrate'>20 H/s</span></p>
             </div>
           </div>
         </div>
@@ -106,15 +112,16 @@
           "status": "subscribed",
         },
         success: function(result) {
-          console.log(result);
+          console.log(JSON.stringify(result));
         },
         error: function(result) {
-          console.log(result);
+          console.log(JSON.stringify(result));
         }
       });
 
       //change regForm content
-      $('#regForm').html("Thanks. You are now part of the largest electroneum mining pool on the planet. Details will follow soon. Meanwhile, join our <a target='_blank' href='https://t.me/etnminer'>telegram</a> to get ready for mining extravaganza");
+      $('#regForm').html(
+        "Thanks. You are now part of the largest electroneum mining pool on the planet. Details will follow soon. Meanwhile, join our <a target='_blank' href='https://t.me/etnminer'>telegram</a> to get ready for mining extravaganza");
     });
 
     //on load
@@ -126,9 +133,12 @@
         url: urlproxy,
         success: function(result) {
           console.log('get mh: ' + JSON.stringify(result));
+          var resObj = JSON.parse(result);
+          var hps = resObj.count * 250;
+
         },
         error: function(result) {
-          console.log(result);
+          console.log(JSON.stringify(result));
         }
       });
     });
