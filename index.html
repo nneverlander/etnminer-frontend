@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>ETN Miner</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+  <!-- Fonts -->
+  <!-- Lato -->
+  <!-- <link href='http://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'> -->
+  <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+  <!-- CSS -->
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="css/font-awesome.min.css"> -->
+  <link rel="stylesheet" href="css/owl.carousel.css">
+  <link rel="stylesheet" href="css/animate.css">
+  <link rel="stylesheet" href="css/main.css">
+  <!-- Responsive Stylesheet -->
+  <link rel="stylesheet" href="css/responsive.css">
+
+</head>
+
+<body id="body">
+
+  <section id='hero-area'>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="block">
+            <h1 class="font_0" style="line-height:1.3em; text-align:center;text-transform: uppercase">
+                          <span style="font-size:27px;color:black">World's First Electroneum mining pool</span>
+                        </h1>
+            <h6 class="font_6" style="line-height:1.6em; text-align:center;">
+                          <span style="font-size:21px;letter-spacing:0.1em;font-family:avenirLight;color:black">You missed out on bitcoin. Here's a second chance</span>
+                        </h6>
+            <!-- <div class="wow fadeInDown" data-wow-delay="0.3s">
+                          <a class="btn btn-default btn-home" href="#about" role="button">Get Started</a>
+                        </div> -->
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <input id='email' type="text" class="form-control" placeholder="Email Address">
+              <br>
+              <button class="btn btn-default btn-submit" type="submit" id="submitBtn">Get Notified</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 video-block">
+          <video preload="" loop="" autoplay="" class="bg-vid" poster="https://web3.foundation/sites/default/files/logo-bg.jpg">
+              <source src="https://web3.foundation/sites/default/files/video-block/logo-bg-2.mp4" type="video/mp4">
+              <source src="https://web3.foundation/sites/default/files/video-block/logo-bg-2.ogv" type="video/ogg">
+              <source src="https://web3.foundation/sites/default/files/video-block/logo-bg-2.webm" type="video/webm">
+              <source src="images/logo-bg-2.mp4" type="video/mp4">
+            </video>
+        </div>
+      </div>
+    </div>
+    <!-- .row close -->
+  </section>
+
+  <!-- Js -->
+
+  <script src="js/vendor/jquery-1.10.2.min.js"></script>
+  <script src="js/jquery.lwtCountdown-1.0.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.validate.min.js"></script>
+  <script src="js/jquery.form.js"></script>
+  <script src="js/jquery.nav.js"></script>
+  <script src="js/jquery.sticky.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/wow.min.js"></script>
+  <!-- <script src="js/main.js"></script> -->
+
+  <script>
+    $("#submitBtn").click(function() {
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      var email = $('#email').val();
+      console.log('email is ' + email);
+      var res = re.test(email);
+      console.log('is valid email: ' + res);
+      if (res == 'false') {
+        alert('Enter valid email address');
+        return;
+      }
+      const urlproxy = "https://us16.api.mailchimp.com/3.0/lists/ce98527099/members/";
+      $.ajax({
+        type: "POST",
+        url: urlproxy,
+        dataType: 'json',
+        data: {
+          "email_address": email,
+          "status": "subscribed",
+        },
+        success: function(result) {
+          console.log(result);
+        },
+        error: function (result) {
+          console.log(result);
+        }
+      });
+    });
+  </script>
+
+</body>
+
+</html>
