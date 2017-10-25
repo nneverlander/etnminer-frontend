@@ -58,7 +58,7 @@
           </div>
           <div class="col-md-6">
             <div style="font-family:avenirLight;">
-              <p style="font-size:20px;"> Hash rate pooled so far: <span id='hashrate'>20 H/s</span></p>
+              <p style="font-size:20px; padding-top:20px"> Hash rate pooled so far: <span id='hashrate'>20 H/s</span></p>
             </div>
           </div>
         </div>
@@ -112,7 +112,9 @@
           "status": "subscribed",
         },
         success: function(result) {
-          console.log(JSON.stringify(result));
+          var resObj = JSON.parse(JSON.stringify(result));
+          var hps = resObj.count * 250;
+          $('#hashrate').html(hps + ' H/s');
         },
         error: function(result) {
           console.log(JSON.stringify(result));
@@ -132,10 +134,9 @@
         type: "GET",
         url: urlproxy,
         success: function(result) {
-          console.log('get mh: ' + JSON.stringify(result));
-          var resObj = JSON.parse(result);
+          var resObj = JSON.parse(JSON.stringify(result));
           var hps = resObj.count * 250;
-
+          $('#hashrate').html(hps + ' H/s');
         },
         error: function(result) {
           console.log(JSON.stringify(result));
