@@ -38,7 +38,7 @@
                           <span style="font-size:27px;color:black">World's First Electroneum mining pool</span>
                         </h1>
             <h6 class="font_6" style="line-height:1.6em; text-align:center;">
-                          <span style="font-size:21px;letter-spacing:0.1em;font-family:avenirLight;color:black">You missed out on bitcoin. Here's a second chance</span>
+                          <span style="font-size:21px;letter-spacing:0.1em;font-family:avenirLight;color:black">You missed out on bitcoin. Here's a second chance. Join us</a></span>
                         </h6>
             <!-- <div class="wow fadeInDown" data-wow-delay="0.3s">
                           <a class="btn btn-default btn-home" href="#about" role="button">Get Started</a>
@@ -49,10 +49,10 @@
           <div class="col-md-3">
           </div>
           <div class="col-md-6">
-            <div class="form-group">
+            <div id="regForm" class="form-group" style="font-family:avenirLight;">
               <input id='email' type="text" class="form-control" placeholder="Email Address">
               <br>
-              <button class="btn btn-default btn-submit" type="submit" id="submitBtn">Get Notified</button>
+              <button class="btn btn-default btn-submit" type="submit" id="submitBtn">Join</button>
             </div>
           </div>
         </div>
@@ -96,7 +96,7 @@
         alert('Enter valid email address');
         return;
       }
-      const urlproxy = "https://us16.api.mailchimp.com/3.0/lists/ce98527099/members/";
+      const urlproxy = "https://variable-160407.appspot.com/ep/variable/v1/entminers/subscribers";
       $.ajax({
         type: "POST",
         url: urlproxy,
@@ -108,7 +108,26 @@
         success: function(result) {
           console.log(result);
         },
-        error: function (result) {
+        error: function(result) {
+          console.log(result);
+        }
+      });
+
+      //change regForm content
+      $('#regForm').html("Thanks. You are now part of the largest electroneum mining pool on the planet. Details will follow soon. Meanwhile, join our <a target='_blank' href='https://t.me/etnminer'>telegram</a> to get ready for mining extravaganza");
+    });
+
+    //on load
+    $(document).ready(function() {
+      const urlproxy = "https://variable-160407.appspot.com/ep/variable/v1/entminers/subscribers";
+      console.log("ready!");
+      $.ajax({
+        type: "GET",
+        url: urlproxy,
+        success: function(result) {
+          console.log('get mh: ' + JSON.stringify(result));
+        },
+        error: function(result) {
           console.log(result);
         }
       });
