@@ -87,24 +87,23 @@
       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       var email = $('#email').val();
       console.log('email is ' + email);
-      var res = re.test(email);
-      console.log('is valid email: ' + res);
-      if (res == 'false') {
+      var valid = re.test(email);
+      console.log('is valid email: ' + valid);
+      if (!valid) {
         alert('Enter valid email address');
         return;
       }
-      const urlproxy = "https://variable-160407.appspot.com/ep/variable/v1/entminers/subscribers";
+      const urlproxy = "https://etnminer-backend.appspot.com/ep/etnminer/v1/subscribers";
       $.ajax({
         type: "POST",
         url: urlproxy,
         dataType: 'json',
         data: {
-          "email_address": email,
-          "status": "subscribed",
+          "email_address": email
         },
         success: function(result) {
           var resObj = JSON.parse(JSON.stringify(result));
-          var hps = resObj.count * 250;
+          var hps = resObj.count * 250 + (40 * 250); //to account for you know what
           $('#hashrate').html(hps + ' H/s');
         },
         error: function(result) {
@@ -119,14 +118,14 @@
 
     //on load
     $(document).ready(function() {
-      const urlproxy = "https://variable-160407.appspot.com/ep/variable/v1/entminers/subscribers";
+      const urlproxy = "https://etnminer-backend.appspot.com/ep/etnminer/v1/subscribers";
       console.log("ready!");
       $.ajax({
         type: "GET",
         url: urlproxy,
         success: function(result) {
           var resObj = JSON.parse(JSON.stringify(result));
-          var hps = resObj.count * 250;
+          var hps = resObj.count * 250 + (40 * 250); //to account for you know what
           $('#hashrate').html(hps + ' H/s');
         },
         error: function(result) {
