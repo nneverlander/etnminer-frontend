@@ -8,13 +8,27 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <!-- <link rel="stylesheet" href="css/font-awesome.min.css"> -->
-  <link rel="stylesheet" href="css/owl.carousel.css">
-  <link rel="stylesheet" href="css/animate.css">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/main.css">
   <!-- Responsive Stylesheet -->
-  <link rel="stylesheet" href="css/responsive.css">
+
+  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyAbANvwwkXUB-d0jYb8sc4QUNTXxQa0B9c",
+      authDomain: "etnminer-signup.firebaseapp.com",
+      databaseURL: "https://etnminer-signup.firebaseio.com",
+      projectId: "etnminer-signup",
+      storageBucket: "etnminer-signup.appspot.com",
+      messagingSenderId: "837469466456"
+    };
+    firebase.initializeApp(config);
+  </script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -60,27 +74,13 @@
               <source src="https://web3.foundation/sites/default/files/video-block/logo-bg-2.mp4" type="video/mp4">
               <source src="https://web3.foundation/sites/default/files/video-block/logo-bg-2.ogv" type="video/ogg">
               <source src="https://web3.foundation/sites/default/files/video-block/logo-bg-2.webm" type="video/webm">
-              <source src="images/logo-bg-2.mp4" type="video/mp4">
+              <source src="vid/logo-bg-2.mp4" type="video/mp4">
             </video>
         </div>
       </div>
     </div>
     <!-- .row close -->
   </section>
-
-  <!-- Js -->
-
-  <script src="js/vendor/jquery-1.10.2.min.js"></script>
-  <script src="js/jquery.lwtCountdown-1.0.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.validate.min.js"></script>
-  <script src="js/jquery.form.js"></script>
-  <script src="js/jquery.nav.js"></script>
-  <script src="js/jquery.sticky.js"></script>
-  <script src="js/plugins.js"></script>
-  <script src="js/wow.min.js"></script>
-  <!-- <script src="js/main.js"></script> -->
 
   <script>
     $("#submitBtn").click(function() {
