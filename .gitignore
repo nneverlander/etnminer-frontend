@@ -34,3 +34,6 @@ Thumbs.db
 *.rar
 *.tar
 *.zip
+
+package-lock.json
+functions/node_modules/

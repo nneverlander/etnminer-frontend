@@ -1,0 +1,9 @@
+{
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "dependencies": {
+    "firebase-functions": "^0.7.0",
+    "nodemailer": "^4.0.1"
+  },
+  "private": true
+}

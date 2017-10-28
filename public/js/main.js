@@ -1,55 +1,69 @@
-function loginFb() {
-  var provider = new firebase.auth.FacebookAuthProvider();
-  provider.addScope('email');
-  firebase.auth().signInWithPopup(provider).then(function(result) {
-    // The firebase.User instance:
-    var user = result.user;
-    // The Facebook firebase.auth.AuthCredential containing the Facebook
-    // access token:
-    var credential = result.credential;
-  }, function(error) {
-    console.log(JSON.stringify(error));
-  });
-}
-
-function loginGoogle() {
-  // Using a popup.
-  var provider = new firebase.auth.GoogleAuthProvider();
-  provider.addScope('email');
-  firebase.auth().signInWithPopup(provider).then(function(result) {
-    // This gives you a Google Access Token.
-    var token = result.credential.accessToken;
-    // The signed-in user info.
-    var user = result.user;
-  }, function(error) {
-    console.log(JSON.stringify(error));
-  });
-}
-
-function signUpEmailAndPass(email, password) {
-  firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-    // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    console.log("email sign up failed with code: " + errorCode + " and message " + errorMessage);
-
-  });
-}
-
-function loginEmail(email, password) {
-  firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-    // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    console.log("email login failed with code: " + errorCode + " and message " + errorMessage);
-
-  });
-}
-
 function signOut() {
   firebase.auth().signOut().then(function() {
     // Sign-out successful.
   }).catch(function(error) {
-    // An error happened.
+    console.log(JSON.stringify(error));
   });
+}
+
+function isLoggedIn() {
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
+      console.log('curr user: ' + user.email);
+      return true;
+    } else {
+      // No user is signed in.
+      console.log('no curr user');
+      return false;
+    }
+  });
+}
+
+function sendPasswordResetEmail() {
+  if (!checkProviderIsEmail()) {
+    console.log('provider is not email hence not sending password reset email');
+    return;
+  }
+  var auth = firebase.auth();
+  var emailAddress = auth.user.email;
+  auth.sendPasswordResetEmail(emailAddress).then(function() {
+    console.log('password reset email sent to: ' + emailAddress);
+  }).catch(function(error) {
+    console.log(JSON.stringify(error));
+  });
+}
+
+function changePassword(oldPass, newPass) {
+  if (!checkProviderIsEmail()) {
+    console.log('provider is not email hence not changing password');
+    return;
+  }
+  var user = firebase.auth().currentUser;
+  user.reauthenticateWithCredential(firebase.auth.EmailAuthProvider.credential(user.email, oldPass)).then(function() {
+    // User re-authenticated.
+    user.updatePassword(newPass).then(function() {
+      console.log('password successfully reset');
+    }).catch(function(error) {
+      alert('Password not changed. Error : ' + error.message);
+      console.log(JSON.stringify(error));
+    });
+  }).catch(function(error) {
+    alert('Password not changed. Error : ' + error.message);
+    console.log(JSON.stringify(error));
+  });
+}
+
+function checkProviderIsEmail() {
+  return true;
+  // var user = firebase.auth().currentUser;
+  // user.providerData.providerId.then(function(provider) {
+  //   console.log('auth provider is: ' + provider);
+  //   if (provider === firebase.auth.EmailAuthProvider.PROVIDER_ID) {
+  //     return true;
+  //   }
+  // }).catch(function(error) {
+  //   console.log(JSON.stringify(error));
+  // });
+  // return false;
 }

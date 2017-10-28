@@ -17,11 +17,14 @@
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Type" content="text/html" />
   <title>ETN Miner</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/login.css">
   <link rel="stylesheet" href="css/main.css">
 </head>
 
@@ -33,11 +36,29 @@
         <div class="col-md-12">
           <div class="block">
             <h1 class="font_0" style="line-height:1.3em; text-align:center;text-transform: uppercase">
-                          <span style="font-size:27px;color:black">World's First Electroneum mining pool</span>
-                        </h1>
-            <h6 class="font_6" style="line-height:1.6em; text-align:center;">
-                          <span style="font-size:21px;letter-spacing:0.1em;font-family:avenirLight;color:black">You missed out on bitcoin. Here's a second chance. Join us</a></span>
-                        </h6>
+              <span style="font-size:27px;color:black">Easy Electroneum browser mining pool</span>
+            </h1>
+            <!-- <h6 class="font_6" style="line-height:1.6em; text-align:center;">
+                          <span style="font-size:21px;letter-spacing:0.1em;font-family:avenirLight;color:black">You missed out on bitcoin. Here's a second chance. Pool with us</span>
+                        </h6> -->
+            <h6 class="font_6">
+                Sign in and start mining right from your browser. You are in good company
+            </h6><br>
+            <h6 class="font_6">
+                  Log in with
+            </h6>
+            <br>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+          </div>
+          <br>
+          <div class="col-md-3" style="display: flex; justify-content: flex-end">
+            <a href="#" class="fa fa-facebook" onclick="loginFb()"></a>
+          </div>
+          <div class="col-md-3">
+            <a href="#" class="fa fa-google" onclick="loginGoogle()"></a>
           </div>
         </div>
         <div class="row">
@@ -45,9 +66,17 @@
           </div>
           <div class="col-md-6">
             <div id="regForm" class="form-group" style="font-family:avenirLight;">
+              <hr>
+              <p style="text-align:center;">Or sign up with email and password</p>
+              <br>
               <input id='email' type="text" class="form-control" placeholder="Email Address">
               <br>
-              <button class="btn btn-default btn-submit" type="submit" id="submitBtn">Join</button>
+              <input id='password' type="password" class="form-control" placeholder="Password">
+              <br>
+              <div>
+                <button class="btn btn-default btn-submit" type="submit" id="submitBtn" onclick="signUpEmailAndPass()">Sign up</button>
+                <span> or </span><a href="#" onclick="loginEmail()">Login</a>
+              </div>
             </div>
           </div>
         </div>
@@ -78,6 +107,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+
   <script>
     // Initialize Firebase
     var config = {
@@ -90,30 +120,16 @@
     };
     firebase.initializeApp(config);
   </script>
-  <script src="js/main.js"></script>
 
   <script>
     //on load
     $(document).ready(function() {
-      if (!isLoggedIn()) {
-        window.location.replace("login");
+      if (isLoggedIn()) {
+        window.location.replace("index.html");
       }
-      const urlproxy = "https://etnminer-backend.appspot.com/ep/etnminer/v1/subscribers";
-      console.log("ready!");
-      $.ajax({
-        type: "GET",
-        url: urlproxy,
-        success: function(result) {
-          var resObj = JSON.parse(JSON.stringify(result));
-          var hps = resObj.count * 250 + (40 * 250); //to account for you know what
-          $('#hashrate').html(hps + ' H/s');
-        },
-        error: function(result) {
-          console.log(JSON.stringify(result));
-        }
-      });
     });
   </script>
+  <script src="js/login.js"></script>
 
 </body>
 

@@ -1,5 +1,6 @@
 {
   "projects": {
-    "etnminer-signup": "etnminer-signup"
+    "etnminer-signup": "etnminer-signup",
+    "default": "etnminer-signup"
   }
 }
