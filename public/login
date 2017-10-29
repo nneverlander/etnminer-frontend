@@ -125,7 +125,7 @@
     //on load
     $(document).ready(function() {
       if (isLoggedIn()) {
-        window.location.replace("index.html");
+        window.location.replace("index");
       }
     });
   </script>
