@@ -6,12 +6,11 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const config = {
   entry: {
-    index: './src/js/index.js',
-    miner: './src/js/miner.js'
+    index: './src/js/index.js'
   },
   output: {
     path: path.resolve(__dirname, 'public'),
-    filename: '[name].bundle.js'
+    filename: '[name].js',
   },
   module: {
     rules: [{
@@ -29,7 +28,7 @@ const config = {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'common'
     }),
-    new CleanWebpackPlugin(['public/*.*']),
+    new CleanWebpackPlugin(['publicasfsff']),
     new CopyWebpackPlugin([{
       from: './src/html/*',
       flatten: true,

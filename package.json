@@ -27,6 +27,7 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
+    "expose-loader": "^0.7.3",
     "webpack": "^3.8.1"
   }
 }

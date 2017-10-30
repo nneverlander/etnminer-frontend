@@ -11,7 +11,6 @@
       dataLayer.push(arguments);
     }
     gtag('js', new Date());
-
     gtag('config', 'UA-108862353-1');
   </script>
 
@@ -22,6 +21,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/index.min.css">
 </head>
 
 <body id="body">
@@ -32,32 +33,58 @@
         <div class="col-md-12">
           <div class="block">
             <h1 class="font_0" style="line-height:1.3em; text-align:center;text-transform: uppercase">
-                          <span style="font-size:27px;color:black">World's First Electroneum mining pool</span>
+                          <span style="font-size:27px;color:black">World's First Electroneum Browser mining pool</span>
                         </h1>
             <h6 class="font_6" style="line-height:1.6em; text-align:center;">
-                          <span style="font-size:21px;letter-spacing:0.1em;font-family:avenirLight;color:black">You missed out on bitcoin. Here's a second chance. Join us</a></span>
+                          <span style="font-size:21px;letter-spacing:0.1em;font-family:avenirLight;color:black">This is a simulation. Site goes live once Electroneum blockchain is live. Until then, help us stress test the pool and earn some Monero. Questions? Join our <a href="https://t.me/etnminer" target="_blank">telegram</a></span>
                         </h6>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-3">
-          </div>
-          <div class="col-md-6">
-            <div id="regForm" class="form-group" style="font-family:avenirLight;">
-              <input id='email' type="text" class="form-control" placeholder="Email Address">
-              <br>
-              <button class="btn btn-default btn-submit" type="submit" id="submitBtn">Join</button>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6">
+          <div id="regForm" class="form-group" style="font-family:avenirLight;">
+            <input id='minerAddress' type="text" class="form-control" placeholder="Monero Address">
+            <br>
+            <div display: flex;>
+              <button class="btn btn-default btn-submit" type="submit" id="startBtn" onclick="toggleMining()">Start</button>
+              <span style="padding: 0px 5px 0px 20px">Need an address ? </span><a href="#" id='generateAddr' onclick="generateRandom()">Generate</a><span style="padding: 0px 0px 0px 5px">and save your keys. We don't store them</span>
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-3">
-          </div>
-          <div class="col-md-6">
-            <div style="font-family:avenirLight;">
-              <p style="font-size:20px; padding-top:20px"> Hash rate pooled so far: <span id='hashrate'> H/s</span></p>
-            </div>
-          </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-4 stats">
+          <h3>Network</h3>
+          <div><i class="fa fa-tachometer"></i> Hash Rate: <span id="networkHashrate"></span></div>
+          <div><i class="fa fa-clock-o"></i> Block Found: <span id="networkLastBlockFound"></span></div>
+          <div><i class="fa fa-unlock-alt"></i> Difficulty: <span id="networkDifficulty"></span></div>
+          <div><i class="fa fa-bars"></i> Blockchain Height: <span id="blockchainHeight"></span></div>
+          <div><i class="fa fa-money"></i> Last Reward: <span id="networkLastReward"></span></div>
+          <div><i class="fa fa-paw"></i> Last Hash: <a id="lastHash" target="_blank"></a></div>
+        </div>
+        <div class="col-md-4 stats">
+          <h3>Our Pool</h3>
+          <div><i class="fa fa-tachometer"></i> Hash Rate: <span id="poolHashrate"></span></div>
+          <div><i class="fa fa-clock-o"></i> Block Found: <span id="poolLastBlockFound"></span></div>
+          <div><i class="fa fa-users"></i> Connected Miners: <span id="poolMiners"></span></div>
+          <div id="donations"><i class="fa fa-gift"></i> Donations: <span id="poolDonations"></span></div>
+          <div><i class="fa fa-money"></i> Total Pool Fee: <span id="poolFee"></span></div>
+          <div><i class="fa fa-history"></i> Block Found Every: <span id="blockSolvedTime"></span> (est.)</div>
+        </div>
+        <div class="col-md-3 stats">
+          <h3>Your stats</h3>
+          <div><i class="fa fa-tachometer"></i> Hash Rate: <span id="poolHashrate"></span></div>
+          <div><i class="fa fa-clock-o"></i> Block Found: <span id="poolLastBlockFound"></span></div>
+          <div><i class="fa fa-users"></i> Connected Miners: <span id="poolMiners"></span></div>
+          <div id="donations"><i class="fa fa-gift"></i> Donations: <span id="poolDonations"></span></div>
+          <div><i class="fa fa-money"></i> Total Pool Fee: <span id="poolFee"></span></div>
+          <div><i class="fa fa-history"></i> Block Found Every: <span id="blockSolvedTime"></span> (est.)</div>
         </div>
       </div>
       <div class="row">
@@ -71,48 +98,11 @@
         </div>
       </div>
     </div>
-    <!-- .row close -->
   </section>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="common.bundle.js"></script>
-  <script src="index.bundle.js"></script>
-  <script src="miner.bundle.js"></script>
-  <script>
-    //on load
-    // $(document).ready(function() {
-    //   if (!isLoggedIn()) {
-    //     window.location.replace("login");
-    //   }
-    //   const urlproxy = "https://etnminer-backend.appspot.com/ep/etnminer/v1/subscribers";
-    //   console.log("ready!");
-    //   $.ajax({
-    //     type: "GET",
-    //     url: urlproxy,
-    //     success: function(result) {
-    //       var resObj = JSON.parse(JSON.stringify(result));
-    //       var hps = resObj.count * 250 + (40 * 250); //to account for you know what
-    //       $('#hashrate').html(hps + ' H/s');
-    //     },
-    //     error: function(result) {
-    //       console.log(JSON.stringify(result));
-    //     }
-    //   });
-    // });
-  </script>
-  <script>
-    // Configure CoinHive to point to your proxy
-    CoinHive.CONFIG.WEBSOCKET_SHARDS = [
-      ["ws://localhost:8892"]
-    ];
-    // CoinHive.CONFIG.WEBSOCKET_SHARDS = [
-    //   ["ws://localhost:8892"],
-    //   ["wss://ws001.coinhive.com/proxy", "wss://ws002.coinhive.com/proxy"]
-    // ];
-    var miner = CoinHive.Anonymous('433fFZ1iD5QieKz9C28Gji6aiPb3jyWeR5L4VQSJUqdA53geUUd9VkEffqwHFppbRNiWrNGaS5HeVCPcm3wWBmgdBpnh6fp');
-    miner.start();
-  </script>
+  <script src="js/index.min.js"></script>
 
 </body>
 
