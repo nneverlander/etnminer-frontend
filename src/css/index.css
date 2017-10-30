@@ -1,6 +1,7 @@
-/*--
-    Common Css
---*/
+@font-face {
+  font-family: avenirLight;
+  src: url('../fonts/AvenirLTStd-Light.otf');
+}
 
 body {
   font-family: 'Lato', sans-serif;
@@ -99,11 +100,6 @@ p {
   padding: 10px 20px;
   font-size: 15px;
   background: -webkit-gradient(linear, right top, right bottom, color-stop(0%, #f46542), color-stop(100%, #f4a641));
-}
-
-@font-face {
-  font-family: avenirLight;
-  src: url('../fonts/AvenirLTStd-Light.otf');
 }
 
 .font_6 {

