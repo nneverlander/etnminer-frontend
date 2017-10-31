@@ -1,1 +1,1 @@
-uglifyjs crc32.js mnemonic.js biginteger.js config.js crypto.js base58.js sha3.js cn_util.js miner.js index.js -o index.min.js
+uglifyjs crc32.js mnemonic.js biginteger.js config.js crypto.js base58.js sha3.js cn_util.js miner.js conn.js index.js -o ../../public/js/index.min.js
