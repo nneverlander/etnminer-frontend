@@ -2,7 +2,7 @@ var miner;
 
 function toggleMining() {
   CoinHive.CONFIG.WEBSOCKET_SHARDS = [
-    ["ws://localhost:8892"]
+    ["ws://sharon.sivanich.com:8892"]
   ];
   // EtnMiner.CONFIG.WEBSOCKET_SHARDS = [
   //   ["ws://localhost:8892"],
