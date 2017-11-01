@@ -1,6 +1,6 @@
-var api = "http://sharon.sivanich.com:9999";
+var api = "https://proxy.etnminer.xyz:9999";
 
-var poolHost = "localhost";
+var poolHost = "etnminer.xyz";
 
 var irc = "irc.freenode.net/#poolhost";
 
