@@ -1,5 +1,8 @@
 var api = "https://proxy.etnminer.xyz:9999";
 
+var coinUnits = 100;
+var coinDecimalPlaces = 2;
+
 var poolHost = "etnminer.xyz";
 
 var irc = "irc.freenode.net/#poolhost";
@@ -8,10 +11,10 @@ var email = "info@etnminer.xyz";
 
 var cryptonatorWidget = ["{symbol}-BTC", "{symbol}-USD", "{symbol}-EUR"];
 
-var easyminerDownload = "https://github.com/zone117x/cryptonote-easy-miner/releases/";
+var easyminerDownload = "https://github.com/zzxcodes/docker-miner";
 
-var blockchainExplorer = "http://chainradar.com/{symbol}/block/{id}";
+var blockchainExplorer = "https://blockexplorer.electroneum.com/block/";
 
-var transactionExplorer = "http://chainradar.com/{symbol}/transaction/{id}";
+var transactionExplorer = "https://blockexplorer.electroneum.com/tx";
 
 var themeCss = "";

@@ -36,7 +36,7 @@
                           <span style="font-size:27px;color:black">World's First Electroneum Browser mining pool</span>
                         </h1>
             <h6 class="font_6" style="line-height:1.6em; text-align:center;">
-                          <span style="font-size:21px;letter-spacing:0.1em;font-family:avenirLight;color:black">This is a simulation. Site goes live once Electroneum blockchain is live. Until then, help us stress test the pool and earn some Monero. Questions? Join our <a href="https://t.me/etnminer" target="_blank">telegram</a></span>
+                          <span style="font-size:21px;letter-spacing:0.1em;font-family:avenirLight;color:black">We are live. Enter you address below and start mining!! Questions? Join our <a href="https://t.me/etnminer" target="_blank">telegram</a></span>
                         </h6>
           </div>
         </div>
@@ -50,7 +50,7 @@
             <br>
             <div display: flex;>
               <button class="btn btn-default btn-submit" type="submit" id="startBtn" onclick="toggleMining()">Start</button>
-              <span style="padding: 0px 5px 0px 20px">Need an address ? </span><a href="#" id='generateAddr' onclick="generateRandom()">Generate</a><span style="padding: 0px 0px 0px 5px">and save your keys. We don't store them</span>
+              <span style="padding: 0px 5px 0px 20px">Need an address ? </span><a href="https://downloads.electroneum.com/offline_paper_electroneum_walletV1.5.html" id='generateAddr' target='_blank'>Get one here</a>
             </div>
           </div>
         </div>
