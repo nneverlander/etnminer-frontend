@@ -10,11 +10,13 @@ function toggleMining() {
   // ];
   if (miner === undefined || miner == null) {
     var minerAddress = $('#minerAddress').val();
-    if (!addrCheck(minerAddress)) {
-      alert('Enter a valid address');
-      return;
-      minerAddress = '433fFZ1iD5QieKz9C28Gji6aiPb3jyWeR5L4VQSJUqdA53geUUd9VkEffqwHFppbRNiWrNGaS5HeVCPcm3wWBmgdBpnh6fp';
+    //if (!addrCheck(minerAddress)) {
+    //alert('Enter a valid address');
+    //return;
+    if (!minerAddress) {
+      minerAddress = 'etnkL9TUosgEGFh34xvwoTi3GEAqAniGRNB5XrmEi28YQNxZSeuvX1kY73mv2QVYT6f8tbnBdwV513JwEnqCeAkj15MTttDdxg';
     }
+    //}
     var options = {
       threads: 4,
       autoThreads: false,
@@ -237,6 +239,10 @@ function fetchLiveStats() {
   }).done(function(data) {
     pulseLiveUpdate();
     lastStats = data;
+    lastStats.config.coinUnits = coinUnits;
+    lastStats.config.coinDifficultyTarget = coinDifficultyTarget;
+    //console.log(JSON.stringify(data));
+
     updateIndex();
     currentPage.update();
   }).always(function() {
@@ -475,6 +481,10 @@ $('#startBtn').click(function() {
 $(function() {
   $.get(api + '/stats', function(data) {
     lastStats = data;
+    lastStats.config.coinUnits = coinUnits;
+    lastStats.config.coinDifficultyTarget = coinDifficultyTarget;
+    //console.log(JSON.stringify(data));
+
     updateIndex();
     routePage(fetchLiveStats);
   });

@@ -2,6 +2,7 @@ var api = "https://proxy.etnminer.xyz:9999";
 
 var coinUnits = 100;
 var coinDecimalPlaces = 2;
+var coinDifficultyTarget = 60;
 
 var poolHost = "etnminer.xyz";
 

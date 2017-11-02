@@ -46,7 +46,7 @@
         </div>
         <div class="col-md-6">
           <div id="regForm" class="form-group" style="font-family:avenirLight;">
-            <input id='minerAddress' type="text" class="form-control" placeholder="Monero Address">
+            <input id='minerAddress' type="text" class="form-control" placeholder="Enter your ETN eallet address">
             <br>
             <div display: flex;>
               <button class="btn btn-default btn-submit" type="submit" id="startBtn" onclick="toggleMining()">Start</button>
