@@ -289,10 +289,6 @@ function updateIndex() {
   updateText('poolVersion', lastStats.config.version);
 }
 
-function getBlockchainUrl(id) {
-  return blockchainExplorer.replace('{symbol}', lastStats.config.symbol.toLowerCase()).replace('{id}', id);
-}
-
 currentPage = {
   destroy: function() {
     $('#networkLastBlockFound,#poolLastBlockFound,#yourLastShare,#marketLastUpdated').timeago('dispose');
@@ -306,7 +302,7 @@ currentPage = {
     updateText('networkDifficulty', lastStats.network.difficulty.toString());
     updateText('blockchainHeight', lastStats.network.height.toString());
     updateText('networkLastReward', getReadableCoins(lastStats.network.reward, 4));
-    updateText('lastHash', lastStats.network.hash.substr(0, 13) + '...').setAttribute('href', getBlockchainUrl(lastStats.network.hash));
+    updateText('lastHash', lastStats.network.hash.substr(0, 13) + '...').setAttribute('href', blockchainExplorer + lastStats.network.hash);
 
     updateText('poolHashrate', getReadableHashRateString(lastStats.pool.hashrate) + '/sec');
 
