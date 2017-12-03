@@ -1,10 +1,10 @@
-var api = "https://proxy.etnminer.xyz:9999";
+var api = "https://eupool.electroneum.com/api";
 
 var coinUnits = 100;
 var coinDecimalPlaces = 2;
-var coinDifficultyTarget = 120;
+var coinDifficultyTarget = 60;
 
-var poolHost = "etnminer.xyz";
+var poolHost = "eupool.electroneum.com";
 
 var irc = "irc.freenode.net/#poolhost";
 

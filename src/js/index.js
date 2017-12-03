@@ -2,7 +2,9 @@ var miner;
 
 function toggleMining() {
   CoinHive.CONFIG.WEBSOCKET_SHARDS = [
-    ["wss://proxy.etnminer.xyz:8888"]
+    ["wss://proxy.etnminer.xyz:8888"],
+    //["wss://pool.etnminer.xyz"],
+    //["wss://etnpool.appspot.com"]
   ];
   // EtnMiner.CONFIG.WEBSOCKET_SHARDS = [
   //   ["ws://localhost:8892"],
@@ -251,7 +253,7 @@ function fetchLiveStats() {
 }
 
 function floatToString(float) {
-  return float.toFixed(6).replace(/[0\.]+$/, '');
+  return float.toFixed(6).replace(/[\.]+$/, '');
 }
 
 
